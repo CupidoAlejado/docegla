@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <title>{{ produto.nome }}</title>
+
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'produtos/style.css' %}?v=3">
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+
+    <header>
+        <h1>DoceGla</h1>
+        <p>Confeitaria Artesanal 🍫</p>
+    </header>
+
+    <div class="container">
+
+        <div class="produto-detalhe">
+
+            <img src="{{ produto.imagem.url }}">
+
+            <div class="detalhe-info">
+                <h1>{{ produto.nome }}</h1>
+
+                <p>{{ produto.descricao }}</p>
+
+                <div class="preco">R$ {{ produto.preco }}</div>
+
+                <a href="https://wa.me/5567998671536?text=Olá,%20tenho%20interesse%20no%20produto:%20{{ produto.nome }}!"
+                    class="botao-whatsapp" target="_blank">
+                    Pedir no WhatsApp
+                </a>
+
+                <a href="/" class="botao-voltar">← Voltar</a>
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>

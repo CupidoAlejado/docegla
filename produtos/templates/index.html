@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <title>DoceGla 🍫</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'produtos/style.css' %}">
+    <link rel="stylesheet" href="{% static 'produtos/style.css' %}?v=2">
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+
+    <header>
+        <h1>DoceGla</h1>
+        <p>Confeitaria Artesanal 🍫</p>
+    </header>
+
+    <div class="container">
+
+        <div class="menu-categorias">
+
+            <a href="/" class="{% if not categoria_ativa %}ativo{% endif %}">
+                Todos
+            </a>
+
+            {% for categoria in categorias %}
+            <a href="/categoria/{{ categoria.id }}/" class="{% if categoria.id == categoria_ativa %}ativo{% endif %}">
+                {{ categoria.nome }}
+            </a>
+            {% endfor %}
+
+        </div>
+        {% for produto in produtos %}
+
+        <a href="{% url 'produto' produto.id %}" class="link-produto">
+            <div class="produto">
+                <img src="{{ produto.imagem.url }}">
+
+                <div class="info">
+                    <div class="preco">R$ {{ produto.preco }}</div>
+                    <h2>{{ produto.nome }}</h2>
+                    <p>{{ produto.descricao }}</p>
+
+                    <a href="https://wa.me/67998671536?text=Olá,%20tenho%20interesse%20no%20produto:%20{{ produto.nome }}"
+                        class="botao-whatsapp" target="_blank">
+                        Pedir
+                    </a>
+                </div>
+            </div>
+        </a>
+
+        {% endfor %}
+
+    </div>
+
+</body>
+
+</html>
