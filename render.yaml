@@ -2,11 +2,9 @@ services:
   - type: web
     name: docegla
     env: python
-    python_version: 3.11
+    python_version: "3.11"
     build_command: pip install --upgrade pip && pip install -r requirements.txt
     start_command: gunicorn docegla.wsgi:application
-    plan: free # ou starter/professional se você usar outro plano
+    plan: free
     env_vars:
-      DJANGO_SETTINGS_MODULE: docegla.settings
-      SECRET_KEY: your-secret-key-here
-      DEBUG: "False"
+      DJANGO_SETTINGS_MODULE
